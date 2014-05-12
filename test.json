@@ -1,0 +1,10 @@
+{ 
+  "hosts": [ 
+          { "PentesterLab WWW": 
+              {"host": "pentesterlab.com" }}, 
+          
+          { "Remediate WWW": 
+              { "host": "remediate.io" }}   
+          ]
+
+} 

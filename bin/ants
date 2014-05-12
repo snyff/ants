@@ -1,6 +1,6 @@
 
 require 'optparse'
-require 'em-http'
+require File.expand_path(File.join('lib', 'ants'))
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: ants [options]"
@@ -27,5 +27,6 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-p options
-p ARGV
+#p options
+#p ARGV
+Ants.run(options)
