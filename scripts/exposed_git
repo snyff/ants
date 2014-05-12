@@ -4,8 +4,6 @@ on_url do |url|
 end
 
 on_response do |response, headers,  url| 
-  puts url
-  pp headers
   puts url unless response =~ /not found/i
 end
 

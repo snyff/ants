@@ -11,5 +11,6 @@ Do you want ants?
 * em-http-request
 
 # Usage
-  
-  ruby bin/ants -f test.json scripts/git_exposed
+
+  $ ruby bin/ants -f test.json scripts/exposed_git  
+
