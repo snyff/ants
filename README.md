@@ -9,3 +9,7 @@ Do you want ants?
 # Dependencies
 
 * em-http-request
+
+# Usage
+  
+  ruby bin/ants -f test.json scripts/git_exposed
