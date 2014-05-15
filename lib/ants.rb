@@ -38,7 +38,7 @@ class Ants
       end 
       multi.callback do 
         multi.responses[:callback].each do |response|
-          @sc.call_on_response(response[1].response,response[1].response_header, response[1].req.uri.to_s)
+          @sc.call_on_response(response[1].response,response[1].response_header, response[1].req.uri.to_s) if @sc.respond_to?(:call_on_response)
         end
  
 

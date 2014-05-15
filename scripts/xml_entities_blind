@@ -1,0 +1,9 @@
+
+
+on_request do |request|
+  request.req.headers['content-type'] = "text/xml"
+  # need DNS + request
+  request.req.body = "<xml></xml>"
+  request
+end
+

@@ -1,9 +1,7 @@
 
 
 on_request do |request|
- # pp request.req.method
   request.req.headers['origin'] = request.req.host+".evil.pentesterlab.com"
-  #headers << [ "Origin" => "http://evil.pentesterlab.com/" ]
   request
 end
 
