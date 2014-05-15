@@ -9,6 +9,7 @@ au.finance.yahoo.com
 finance.yahoo.com
 search.yahoo.com
 login.yahoo.com
+in.yahoo.com
 dir.yahoo.com
 au.m.yahoo.com
 au.sports.yahoo.com
@@ -74,3 +75,4 @@ personals.yahoo.com
 geo.query.yahoo.com
 beap.adx.yahoo.com
 geo.yahoo.com
+webhosting.yahoo.com
