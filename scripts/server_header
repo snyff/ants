@@ -1,0 +1,12 @@
+
+
+on_request do |request|
+  request
+end
+
+on_response do |response, headers,  url| 
+  if headers['SERVER'] 
+    puts url+"->"+headers['SERVER']
+  end
+end
+
