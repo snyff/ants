@@ -23,10 +23,10 @@ class Ants
       multi = EventMachine::MultiRequest.new
 
       hosts.each_with_index do |h,idx|
-        
-        url = "http://"+h #.["host"] #.value["host"]
+        url = h 
         puts "Before on_url(): "+url if options[:verbose]
         url = @sc.call_on_url(url) if @sc.respond_to?(:call_on_url)
+        url = "http://"+url unless url =~ /\Ahttps?:\/\// 
         puts "After on_url(): "+url if options[:verbose]
         
         # need one hook to tamper url

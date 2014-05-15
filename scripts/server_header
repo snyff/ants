@@ -6,7 +6,7 @@ end
 
 on_response do |response, headers,  url| 
   if headers['SERVER'] 
-    puts url+"->"+headers['SERVER']
+    puts "["+headers['SERVER']+"] "+url
   end
 end
 
