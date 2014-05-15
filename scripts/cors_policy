@@ -1,0 +1,16 @@
+
+
+on_request do |request|
+ # pp request.req.method
+  request.req.headers['origin'] = "evil.pentesterlab.com" 
+  #headers << [ "Origin" => "http://evil.pentesterlab.com/" ]
+  request
+end
+
+on_response do |response, headers,  url| 
+  if headers['ACCESS_CONTROL_ALLOW_ORIGIN'] and headers['ACCESS_CONTROL_ALLOW_CREDENTIALS']
+    ## remove headers['ACCESS_CONTROL_ALLOW_ORIGIN'] == '*'
+    puts headers['ACCESS_CONTROL_ALLOW_ORIGIN']+" -> "+headers['ACCESS_CONTROL_ALLOW_CREDENTIALS']
+  end
+end
+

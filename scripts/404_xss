@@ -1,11 +1,11 @@
 
 on_url do |url|
-  url+= "/.git/config"
+  url+= "/testignore<>\"'"
   url
 end
 
 on_response do |response, headers,  url| 
-  puts url if response =~ /\[branch "/
+  puts url if response =~ /testignore<>"'/
 end
 
 

@@ -6,10 +6,13 @@ require 'pp'
 class Ants
 
   def self.run options
-    if options[:file] 
+    hosts = [] 
+    if options[:file] and options[:file] =~ /.json\z/ 
       json = JSON.parse(File.read(options[:file]))
+      hosts = json['hosts'].map{|x| x.flatten[1]["host"] } 
+    elsif options[:file] and options[:file] =~ /.txt\z/
+      hosts = File.readlines(options[:file]).map{|x| x.chomp! }
     end
-    hosts = json['hosts'] 
     if options[:sample]
       # only first 5 not tested yet
       hosts = hosts[0..4]
@@ -21,13 +24,16 @@ class Ants
 
       hosts.each_with_index do |h,idx|
         
-        url = "http://"+h.flatten[1]["host"] #.value["host"]
+        url = "http://"+h #.["host"] #.value["host"]
         puts "Before on_url(): "+url if options[:verbose]
-        url = @sc.call_on_url(url)
+        url = @sc.call_on_url(url) if @sc.respond_to?(:call_on_url)
         puts "After on_url(): "+url if options[:verbose]
+        
         # need one hook to tamper url
         http = EventMachine::HttpRequest.new(url, :connect_timeout => 1)
         req = http.get
+        #pp http.methods
+        req = @sc.call_on_request(req) if @sc.respond_to?(:call_on_request) # req.methods
         multi.add idx, req
       end 
       multi.callback do 
@@ -64,6 +70,9 @@ class Script
       yield(response, headers, url) if block_given?
     end 
   end
-
-
+  def on_request(&block)
+    Script.send(:define_method, "call_on_request") do |request| 
+      yield(request) if block_given?
+    end
+  end
 end

@@ -1,14 +1,16 @@
-ants
+Ants
 ====
 
-Do you want ants? 
+Do you want Ants? 
 
 ![alt tag](http://31.media.tumblr.com/tumblr_mdlc4pveDz1rikt3no1_400.jpg)
 
+Ants is kind of a lame version of Capistrano for HTTP. 
 
 # Dependencies
 
 * em-http-request
+
 
 # Usage
 
